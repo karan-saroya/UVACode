@@ -13,7 +13,6 @@ long long power(long long a, long long pow,long long mod)
 		{
 			long long ans=power(a,pow/2,mod)%(long long)mod;
 			ans= (ans*ans)%mod;
-			printf("%lld\n",ans);
 			return ans;
 		}
 		else
@@ -21,7 +20,6 @@ long long power(long long a, long long pow,long long mod)
 			long long ans=power(a,pow/2,mod)%(long long)mod;
 			ans= (ans*ans)%mod;
 			ans=(ans * a)%mod;
-			printf("%lld\n",ans);
 			return ans;
 		}
 	}

@@ -45,14 +45,12 @@ int main()
 		}
 	}
 	int num=0;
-	int cases=0;
 	while(scanf("%d",&num)!= EOF && num != 0)
 	{
-		if(cases)
-			printf("\n");
-		else
-			cases++;
-			printf("%d",phi_func(num));
+			if(num == 1)
+				printf("0\n");
+			else
+				printf("%d\n",phi_func(num));
 		
 	}
 	

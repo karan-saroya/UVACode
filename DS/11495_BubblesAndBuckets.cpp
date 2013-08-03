@@ -1,17 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 int main()
 {
-	int num_cases =0;
-	scanf("%d",&num_cases);
-	for(int i=0;i<num_cases;i++)
+	int num=0;
+	while(scanf("%d",&num)!=EOF && num != 0)
 	{
-		int len=0;
-		scanf("%d",&len);
-		const int length=len;
+		const int length=num;
 		int array[length];
-	
 	
 		for(int j=0;j<length;j++)
 		{
@@ -31,14 +26,13 @@ int main()
 				}
 			}
 		}
-		
-		printf("Optimal train swapping takes %d swaps.\n",count);
-		
-		
-		
-		
+		if(count%2 == 0)
+			printf("Carlos\n");
+		else
+			printf("Marcelo\n");
 		
 	}
+	
+	
 	return 0;
 }
-

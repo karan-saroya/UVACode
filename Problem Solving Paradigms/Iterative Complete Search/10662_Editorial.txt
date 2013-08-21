@@ -1,0 +1,16 @@
+Problem Statement:
+	
+	Felix and Leti are going to get married soon, everybody is preparing their gifts, but they have a big problem: the money, their budget is not very high. They would like to get a good restaurant, to "sleep" their first night in a nice hotel and to spend a marvellous honey-moon travelling around the world.
+
+The best way to get the cheapest price is getting an all-included package, that is, we have to contract the travel, the restaurant and the hotel all together.
+
+Is that possible?
+
+The Problem
+
+We have to find the cheapest travel agency-restaurant-hotel combination.The problem is that not all the combinations are allowed.
+
+
+
+Constraints: 
+For every case we have H , T and R < 20 which gives us a nice little advantage i.e. simply search the whole space for the min solution. We need to check every "possible" combo and report the min out all these since we have evry less than 20 at max we can have 20*20*20 cases ~ 10^4 which is definitely reachable using three loops. "DO NOT" foucs on the three loops instead focus on the fact that we are searching the whole space which requires us to use 3 loops . One can look at the hint of 3 loops and that would divert from the real crux of the problem i.e. searching the entire space rather than 3 effin nested loops.

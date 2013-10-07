@@ -1,0 +1,28 @@
+Notes On DP
+Wedding Problem:
+
+Problem Def: Essentially the problem is "pretty simple" you know ive found out that things we do kind of intrinsically are programatically some of the toughest things to do , implementing things/ strategies that ive never heard or thought abt. However back to the def , Given a number of garments and their different types such that their types differ in money. SO select different types of garments such that you have one garment(any type of that garment) and maximize your budget i.e. you spend the most.
+
+Lets Look At the ways to solve it:
+     Since it is a maximize kind of thing you know greedy is a dangerous choice because simply put greedy doesnt work shit.
+	
+	 So best bet is Complete Search:
+	 Now of course if we look at the constraints we will know that Recursive Backtracking aint gonna be able to solve the problem(in the time limit i should add ). But if I just want the pleasure of solving this problem (which should be the first goal IMHO) this is a sure shot way (actually now that I think abt this I sound so stupid because "EVERY" problem can be solved by COmplete Search but i am supid so what can i say wouldnt be much of a challenge if we were given large amount of time :( so stupid of me well youll see a pattern there :) )  So Lets write the recurrences involved BTW I LOVE RECURRENCES. 
+	 
+	 
+	 So CS Algo: (From hereon CS -> Complete Search)
+	 
+	 1.) Choose a garment that fits in the current budget.
+	 2.) For every choice we choose once for every next garment that satisfies the budget constraint.
+	 3.) If we reach at the end we check whether the money left is min if it is we store it else move on man.
+	 
+	 Since Backtracking is all about constraints lets add some:
+	 
+	 1.) If we overshoot our budget at any step we backtrack.
+	 2.) If we maintain a max price and at every step see even if we have max price for every next garment we still cant reach the least money left then we backtrack.
+
+Essentially we have something like wedding(money_left,garment_id) Now there are going to be 20 *201 states for each we would have an ans in our memo table, just susbtitue if the value is known initially else compoute and store it in our table.
+	 
+	 
+	 
+

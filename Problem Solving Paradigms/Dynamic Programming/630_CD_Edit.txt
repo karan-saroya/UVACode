@@ -1,0 +1,27 @@
+Problem Definition:
+The problem is pretty easy , on a side note ive just wondered why do we use pretty with easy :0 idk that (is the problem "beautifully easy" ???). But the problem is that you have some songs with their durations. Now you have a max song duration , select the songs in a such an order that total song duration is maximized. Also the songs chosen have to be one after another in an increasing fashioni.e. the song number chosen must form an increasing seq. i.e. 1 2 3 4 or 1 4 5 or 4 5 6 but not 1 3 2 0.
+
+Ways to solve it:
+1.) CS : Complete Search(Backtracking (BT)) is the most basic way to solve it but lets look at the constraints shall we. There are 20 songs at max so thats settledbut their respective durations are not given so cant tell how many states are there. N is given and no track duration is greater than N.
+
+
+Lets skip to the DP part:
+the function would be songs(int dur__left,int curr_song_num)
+ Our goal is to minimize the dur_left.
+ 
+ Recurrences Would be:
+   If curr_song_num == N check whether dur_left is minimum . If yes then store it else do nothing. Irrespective of this return the dur_left.
+  
+   if dur_left == 0 , then we successfully minimized the duration and hence just save this value(0) and the path to it and return 0.
+  
+   else 
+	if(dur_left for the curr _song_num  is known) then return that value.
+	
+	else
+		call songs all the songs after the curr_song and choose the one with min return value. and save that in memo.
+		
+Analysis: num of states are going to be N*20, i.e linear in N which should be solvable imo lets try it.		
+		
+	
+	
+	

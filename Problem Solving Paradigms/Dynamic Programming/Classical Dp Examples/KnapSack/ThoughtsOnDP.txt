@@ -1,0 +1,62 @@
+Well time to tackle the elephant in the room, I have been trying to understand the concept of DP since approx 2 months  . In that I did understand concepts like LIS and Max Sum pretty easily Max Sum has a 100% attempt  versus  Solve record right now on UVA. The hard part was understanding the 2 dimensional DP like Knapsack and Subset Sum  and Num of Ways to make Change.
+
+
+I basically had an epiphany while learning subset sum -> I came up with the implementation(correct) on my own in very small time after thinking it for a little time i.e. 15-20 mins I guess. The essential thing and the reason that I am not simply checking the ample online resources present is just the fact that
+ 
+a.)  I like to come up with my own version … because my code is my understanding of the particular  topic hence I never expect someone's code to be similar. It just isn't possible, you just cant exactly think like the next person.
+
+b.)  Moreover if I just look at somebody's code and "learn" it even though I understand everything  it just doesn’t compare .. I guess the code feels alien is what I am trying to say.
+
+c.) And in my opinion one can learn from  incorrect implementations which reveal flaws in your understanding of the topic hence using readymade code is in my opinion absolutely stupid. Of course I am aware of the standard code and all that crap but if you stick close to the principles involved I do think you can come up with a reasonable implementation.
+
+d.) I just cannot put in my words the disgust I feel at using someone's implementation of an algorithm It feels impure and just not personal enough for me. 
+
+
+Let me sum up my thoughts on DP:
+ Define a state accr to 2 principles:
+	1.) the state defined should represent a "unique" sub problem/ solution
+	2.) the state should not depend on how we got there . Essentially this means that no matter the path taken to reach this state the answer it gives should be the same every time. Of course this leads to us reusing the result, if this were not the case then we could not replace the storing capability. Also we would also have that parameter as a factor to include in the memo table.
+	
+Depict the relation between states using a recurrence relation-> In my point of view  best way to get Recurrence is to write the Complete Search version of the program and use those recurrences .
+
+2 properties are of course 
+1.) Optimal Substructure i.e. A larger optimal solution contains in itself the optimal solution to a smaller subproblem or in other words small sub problems can be  used to construct a larger solution.
+2.)Overlapping sub problems pretty self explanatory.
+
+How to determine whether this is a single dim DP or multi dim DP.
+Its pretty simple actually you need to see whether the state you have defined depends on how many variables. Or it equal to the number of essential args that you pass the function (By essential I mean disregarding those that are used for purposes other than solving the problem ie.Including the printing the optimal solution)
+
+For eg if  lets look at the LIS I can say that only look at the current position of the array hence this depends on  a single factor i.e element position similar is the case with Max Sum.
+
+However If we look at  Subset Sum non repetitive and I define my state to be SS(sum) then I say that SS(sum) gives me the difference between the sum that I can create with the given values . Okay that is awesome but there's a catch that I can use a value only 1 time hence it stands to reason that if I end up with a particular sum then whether or not I can create it depends on the fact that where in my array am I .For e.g.
+1 2 3 4 5
+
+If I am at position (0- based) 3 in the array  then the sums I can create are 9 and 4 hence if I get the problem to make SS(7) at position 3 then the answer would be 3 (7-4) however if get the same problem  SS(7)  at position 2 then my answer would be clearly 0 since I can create the sum form position 2 hence my assumption that the only factor that the SS()'s answer depends on is the sum to be made is clearly false. Since it also depends on the position I encounter the state hence the 2 principles are violated. 
+
+Hence my memo table should be a 2 dimension in this case of no repetition subset sum (In case repetition is allowed then the memo table is single dim since now we do no depend on the position).
+
+
+Now if I look at KS()
+	
+	I define my state as KS() as a function that returns the max value that can be made if I come at a particular position with a particular capacity .
+	
+	Clearly in a 0/1 where we have no repetition constraint hence it clearly depends on the position that I start from for a particular capacity.
+	
+	Now on to define the recurrence relation:
+	
+	KS(j,i)= 
+			If(j == 0)
+				Return 0;
+			Else if(j<0)
+				Return MinValue;
+			Else if(curr_pos == num_items)
+				Return 0;
+			Int min = MInValue;
+			 for(int k=i; k<num_items;k++)
+					
+					max(j-weight[k],k+1)
+			
+	
+Well the above is the correct implementation finally I have conquered this mountain too so cheers. To infinity and beyond......
+
+To emphasize the importance of having the better state with better factors look at the KnapSack01 implementation and then look at ProperKnapsack file and ull see how choosing the state can be crucial to reduce our DP table from a 3D to a 2D table and acutally the fun part was understading why did such a thing happen. p.s. one of the princioples of states was violated when i used a 2d table for the first implementation hence always be careful while using this.
